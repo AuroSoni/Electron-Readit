@@ -1,26 +1,47 @@
 {
-  "name": "master-electron",
+  "name": "Readit",
   "version": "1.0.0",
-  "description": "Master Electron Course Code",
+  "description": "Master Electron Project",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "watch": "nodemon --exec electron .",
-    "reset": "git reset --hard"
+    "reset": "git reset --hard",
+    "build": "electron-builder -w",
+    "win-cert": "electron-builder create-self-signed-cert -p aurosoni"
   },
   "repository": "https://github.com/stackacademytv/master-electron",
+  "homepage": "https://github.com/stackacademytv/master-electron",
   "keywords": [
     "Electron",
     "Master Electron",
     "demo"
   ],
-  "author": "GitHub, Stackacademytv",
+  "author": "AuroSoni",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^9.0.0",
+    "electron-builder": "^24.13.3",
     "nodemon": "^2.0.0"
   },
   "dependencies": {
     "electron-window-state": "^5.0.3"
+  },
+  "build":{
+    "appId": "com.aurosoni.readit",
+    "copyright": "Copyright AuroSoni",
+    "mac":{
+        "category": "public.app-category.productivity",
+        "target": "dmg"
+    },
+    "win":{
+        "target": "zip",
+        "certificateFile": "./certs/personal-certificate.pfx",
+        "certificatePassword": "Auroauro@1"
+    },
+    "linux":{
+        "category": "utility",
+        "target": "AppImage"
+    }
   }
 }
